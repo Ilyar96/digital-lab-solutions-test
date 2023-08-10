@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { PostListProps } from "./PostList.type";
-import { Container, PostCard } from "..";
-import { Spinner } from "../spinner/Spinner";
+import { Container, PostCard, Loader } from "..";
 import { FetchingStatus } from "../../@types";
 import styles from "./PostList.module.scss";
 
@@ -24,7 +23,7 @@ const PostList: FC<PostListProps> = ({ data, status, onClick }) => {
 				{isError && <div className={styles.empty}>Could not find posts</div>}
 				{isLoading && (
 					<div className={styles.spinner_wrapper}>
-						<Spinner />
+						<Loader />
 					</div>
 				)}
 			</Container>

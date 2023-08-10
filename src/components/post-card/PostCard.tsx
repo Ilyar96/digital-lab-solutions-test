@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, KeyboardEvent } from "react";
 import { PostCardProps } from "./PostCard.type";
 import styles from "./PostCard.module.scss";
 
@@ -13,22 +13,36 @@ const PostCard: FC<PostCardProps> = ({
 	views,
 	onClick,
 }) => {
+	const post = {
+		autor,
+		date,
+		img,
+		img_2x,
+		tags,
+		text,
+		title,
+		views,
+	};
+
 	const clickHandler = () => {
-		onClick({
-			autor,
-			date,
-			img,
-			img_2x,
-			tags,
-			text,
-			title,
-			views,
-		});
+		onClick(post);
+	};
+
+	const onKeyDown = (e: KeyboardEvent<HTMLLIElement>) => {
+		if (e.code === "Enter" || e.code === "Space") {
+			e.preventDefault();
+			onClick(post);
+		}
 	};
 
 	return (
 		<>
-			<li className={styles.post} tabIndex={0} onClick={clickHandler}>
+			<li
+				className={styles.post}
+				tabIndex={0}
+				onClick={clickHandler}
+				onKeyDown={onKeyDown}
+			>
 				<figure className={styles.img_wrapper}>
 					<img
 						className={styles.img}

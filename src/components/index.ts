@@ -10,3 +10,4 @@ export { default as PostList } from "./post-list/PostList";
 export { default as PostCard } from "./post-card/PostCard";
 export { default as Popup } from "./popup/Popup";
 export { default as PostPopup } from "./post-popup/PostPopup";
+export { default as Loader } from "./loader/Loader";

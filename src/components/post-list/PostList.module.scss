@@ -1,7 +1,6 @@
 .posts {
 	margin-bottom: 6.25rem;
 	@media (min-width: 767.98px) {
-		margin-top: 2.875rem;
 		margin-bottom: 10.3125rem;
 	}
 
@@ -19,6 +18,7 @@
 	display: grid;
 	gap: 32px;
 	padding: 0;
+	margin: 0;
 
 	li {
 		list-style: none;

@@ -1,10 +1,12 @@
 import { FC } from "react";
-import styles from "./Spinner.module.scss";
+import styles from "./Loader.module.scss";
 
-export const Spinner: FC = () => {
+const Loader: FC = () => {
 	return (
 		<div className={styles.root}>
 			<img className={styles.img} src="/img/spinner.svg" alt="Loading..." />
 		</div>
 	);
 };
+
+export default Loader;

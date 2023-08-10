@@ -9,7 +9,9 @@ const Nav: FC<NavProps> = ({ className = "", isOpen = false }) => {
 	const firstLinkRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
 
 	useEffect(() => {
-		firstLinkRef.current?.focus();
+		if (isOpen) {
+			firstLinkRef.current?.focus();
+		}
 	}, [isOpen]);
 
 	return (
