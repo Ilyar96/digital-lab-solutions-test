@@ -1,0 +1,12 @@
+.logo {
+	img {
+		width: 10.1875rem;
+		height: 1.5rem;
+		object-fit: contain;
+
+		@media (min-width: 767.98px) {
+			width: 11.3125rem;
+			height: 1.6875rem;
+		}
+	}
+}

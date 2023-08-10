@@ -1,0 +1,38 @@
+.header {
+	&_top {
+		position: relative;
+		display: grid;
+		align-items: center;
+		grid-template-areas: "burger logo search";
+		grid-template-columns: 2.1875rem 1fr 1.8242rem;
+		padding: 2rem 0 1.75rem;
+
+		@media (min-width: 767.98px) {
+			padding: 1.8125rem 0 1.5625rem;
+		}
+	}
+	&_bottom {
+		border-top: 1px solid #e9e9e9;
+		border-bottom: 1px solid #e9e9e9;
+	}
+
+	.logo {
+		display: flex;
+		justify-content: center;
+		grid-area: logo;
+		align-content: center;
+	}
+
+	.search_btn {
+		grid-area: search;
+		margin-left: auto;
+		padding: 0.3125rem;
+		margin-right: -0.3125rem;
+
+		img {
+			width: 1.2rem;
+			height: 1.2rem;
+			object-fit: contain;
+		}
+	}
+}

@@ -1,0 +1,54 @@
+.burger {
+	padding: 0.3125rem;
+	margin-left: -0.3125rem;
+
+	img {
+		width: 1.5625rem;
+		height: 1.05rem;
+		object-fit: contain;
+	}
+}
+
+.menu {
+	@media (max-width: 767.98px) {
+		position: fixed;
+		box-sizing: border-box;
+		width: 320px;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 6;
+		overflow-y: auto;
+		padding: 2rem 0;
+		background: #fff;
+		border-right: 1px solid #e9e9e9;
+		transform: translate(-100vw, 0);
+		transition: transform 0.8s ease;
+
+		&.open {
+			transform: translateZ(0);
+		}
+
+		.nav {
+			padding: 0 1.25rem;
+		}
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 1.25rem 1.1rem;
+			border-bottom: 1px solid #e9e9e9;
+		}
+
+		.close {
+			padding: 0.3125rem;
+			margin-right: -0.3125rem;
+
+			img {
+				width: 1.4rem;
+				height: 1.4rem;
+			}
+		}
+	}
+}
