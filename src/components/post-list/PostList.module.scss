@@ -1,0 +1,24 @@
+.posts {
+	@media (min-width: 767.98px) {
+		margin-top: 2.875rem;
+	}
+}
+
+.list {
+	display: grid;
+	gap: 32px;
+	padding: 0;
+
+	li {
+		list-style: none;
+	}
+
+	@media (min-width: 479.98px) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 32px 25px;
+	}
+	@media (min-width: 767.98px) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 48px 40px;
+	}
+}

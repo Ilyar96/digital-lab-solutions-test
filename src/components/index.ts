@@ -6,3 +6,5 @@ export { default as IconButton } from "./icon-button/IconButton";
 export { default as Nav } from "./nav/Nav";
 export { default as Portal } from "./portal/Portal";
 export { default as MobileMenu } from "./mobile-menu/MobileMenu";
+export { default as PostList } from "./post-list/PostList";
+export { default as PostCard } from "./post-card/PostCard";
