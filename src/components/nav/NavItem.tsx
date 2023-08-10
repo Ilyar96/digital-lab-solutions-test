@@ -20,9 +20,11 @@ const NavItem = forwardRef(
 
 		return (
 			<li
-				className={cn(styles.nav_item, {
-					[styles.with_children]: isHasChildren,
-				})}
+				className={cn(
+					styles.nav_item,
+					{ [styles.with_children]: isHasChildren },
+					{ [styles.open]: isOpen }
+				)}
 			>
 				{isHasChildren ? (
 					<button

@@ -1,20 +1,72 @@
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import cn from "classnames";
 import { Logo, IconButton, Container, MobileMenu } from "../";
 import { mobileMediaQuery } from "../../constants";
 import { useMedia } from "../../hooks";
 import styles from "./Header.module.scss";
+import { SearchContext } from "../../context/SearchContext";
 
 const HeaderTop = () => {
+	const [isOpen, setIsOpen] = useState(false);
 	const isMobile = useMedia(mobileMediaQuery);
-	//TODO Доделать input
+	const searchInputRef = useRef<HTMLInputElement>(null);
+	const { searchValue, changeSearchValue } = useContext(SearchContext);
+
+	useEffect(() => {
+		if (!isOpen) {
+			return;
+		}
+
+		const timer = setTimeout(function () {
+			searchInputRef.current?.focus();
+		}, 300);
+
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [isOpen]);
+
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+		changeSearchValue(e.target.value);
+	};
+
+	const onOpen = () => {
+		setIsOpen(true);
+	};
+
+	const onClose = () => {
+		setIsOpen(false);
+	};
+
 	return (
 		<Container>
 			<div className={styles.header_top}>
 				{isMobile && <MobileMenu />}
 				<Logo className={styles.logo} />
-				<IconButton
-					src="/img/search.svg"
-					ariaLabel="Search..."
-					className={styles.search_btn}
+				{isOpen ? (
+					<IconButton
+						src="/img/close.svg"
+						ariaLabel="Close search input"
+						className={styles.search_btn}
+						onClick={onClose}
+					/>
+				) : (
+					<IconButton
+						src="/img/search.svg"
+						ariaLabel="Open search input"
+						className={styles.search_btn}
+						onClick={onOpen}
+					/>
+				)}
+				<input
+					type="text"
+					className={cn(styles.input, {
+						[styles.open]: isOpen,
+					})}
+					placeholder="Search..."
+					ref={searchInputRef}
+					value={searchValue}
+					onChange={onChange}
 				/>
 			</div>
 		</Container>
