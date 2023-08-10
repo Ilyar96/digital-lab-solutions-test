@@ -23,9 +23,7 @@ const PostCard: FC<PostCardProps> = ({
 				/>
 			</figure>
 			<div className={styles.tag}>{tags}</div>
-			<h3 className={styles.title}>
-				<a href="/">{title}</a>
-			</h3>
+			<h3 className={styles.title}>{title}</h3>
 			<div className={styles.info}>
 				<span className={styles.author}>{autor}</span>
 				<span>{date}</span>

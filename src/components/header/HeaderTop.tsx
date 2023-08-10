@@ -40,9 +40,19 @@ const HeaderTop = () => {
 
 	return (
 		<Container>
-			<div className={styles.header_top}>
+			<div className={cn(styles.header_top, { [styles.open]: isOpen })}>
 				{isMobile && <MobileMenu />}
 				<Logo className={styles.logo} />
+				<input
+					type="text"
+					className={cn(styles.input, {
+						[styles.open]: isOpen,
+					})}
+					placeholder="Search..."
+					ref={searchInputRef}
+					value={searchValue}
+					onChange={onChange}
+				/>
 				{isOpen ? (
 					<IconButton
 						src="/img/close.svg"
@@ -58,16 +68,6 @@ const HeaderTop = () => {
 						onClick={onOpen}
 					/>
 				)}
-				<input
-					type="text"
-					className={cn(styles.input, {
-						[styles.open]: isOpen,
-					})}
-					placeholder="Search..."
-					ref={searchInputRef}
-					value={searchValue}
-					onChange={onChange}
-				/>
 			</div>
 		</Container>
 	);

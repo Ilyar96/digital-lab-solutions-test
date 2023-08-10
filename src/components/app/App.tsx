@@ -1,17 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Header, PostList } from "..";
 import { postService } from "../../services/PostService";
 import { Post } from "../../@types/post";
 import { FetchingStatus } from "../../@types";
+import { SearchContext } from "../../context/SearchContext";
 import "./App.scss";
 
 const App = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
+	const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 	const [status, setStatus] = useState<FetchingStatus>(FetchingStatus.IDLE);
+	const { searchValue } = useContext(SearchContext);
 
 	useEffect(() => {
 		getPosts();
 	}, []);
+
+	useEffect(() => {
+		const filteredPosts = posts.filter(
+			(post) =>
+				post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+				post.text.toLowerCase().includes(searchValue.toLowerCase())
+		);
+
+		setFilteredPosts(filteredPosts);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [posts, searchValue]);
 
 	const getPosts = async () => {
 		try {
@@ -29,7 +43,7 @@ const App = () => {
 		<div className="page">
 			<Header />
 			<main>
-				<PostList data={posts} status={status} />
+				<PostList data={filteredPosts} status={status} />
 			</main>
 		</div>
 	);
