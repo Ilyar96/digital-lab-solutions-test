@@ -1,0 +1,41 @@
+.popup {
+	position: fixed;
+	width: calc(100% - 2.5rem);
+	top: 50%;
+	left: 1.25rem;
+	right: 1.25rem;
+	z-index: 6;
+	box-sizing: border-box;
+	padding: 1.25rem;
+	border-radius: 0.625rem;
+	transform: translate(0, -50%);
+	box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.3);
+	background: #fff;
+
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+
+	@media (min-width: 767.98px) {
+		max-width: 31.25rem;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&.open {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.close {
+		position: absolute;
+		top: 0.625rem;
+		right: 0.625rem;
+
+		img {
+			width: 0.6875rem;
+			height: 0.6875rem;
+		}
+	}
+}

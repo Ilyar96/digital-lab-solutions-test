@@ -1,22 +1,23 @@
 import { FC } from "react";
 import { PostListProps } from "./PostList.type";
 import { Container, PostCard } from "..";
-import { Spinner } from "../Spinner/Spinner";
+import { Spinner } from "../spinner/Spinner";
 import { FetchingStatus } from "../../@types";
 import styles from "./PostList.module.scss";
 
-const PostList: FC<PostListProps> = ({ data, status }) => {
+const PostList: FC<PostListProps> = ({ data, status, onClick }) => {
 	const isSuccess = status === FetchingStatus.FULFILLED;
+	const isError = status === FetchingStatus.FAILURE;
 	const isLoading =
 		status === FetchingStatus.PENDING || status === FetchingStatus.IDLE;
-	const isError = status === FetchingStatus.FAILURE;
+
 	return (
 		<div className={styles.posts}>
 			<Container>
 				{isSuccess && (
 					<ul className={styles.list}>
 						{data.map((post) => (
-							<PostCard key={post.title} {...post} />
+							<PostCard key={post.title} onClick={onClick} {...post} />
 						))}
 					</ul>
 				)}

@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { Header, PostList } from "..";
+import { Header, PostList, PostPopup } from "..";
 import { postService } from "../../services/PostService";
 import { Post } from "../../@types/post";
 import { FetchingStatus } from "../../@types";
 import { SearchContext } from "../../context/SearchContext";
-import "./App.scss";
+import styles from "./App.module.scss";
 
 const App = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
+	const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 	const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
+	const [isOpen, setIsOpen] = useState(false);
 	const [status, setStatus] = useState<FetchingStatus>(FetchingStatus.IDLE);
 	const { searchValue } = useContext(SearchContext);
 
@@ -39,11 +41,29 @@ const App = () => {
 		}
 	};
 
+	const togglePopup = () => {
+		setIsOpen((prev) => !prev);
+	};
+
+	const onClickPostCard = (post: Post) => {
+		togglePopup();
+		setSelectedPost(post);
+	};
+
 	return (
-		<div className="page">
+		<div className={styles.page}>
 			<Header />
 			<main>
-				<PostList data={filteredPosts} status={status} />
+				<PostList
+					data={filteredPosts}
+					status={status}
+					onClick={onClickPostCard}
+				/>
+				<PostPopup
+					open={isOpen}
+					selectedPost={selectedPost}
+					togglePopup={togglePopup}
+				/>
 			</main>
 		</div>
 	);

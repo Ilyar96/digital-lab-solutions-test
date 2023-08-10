@@ -8,3 +8,5 @@ export { default as Portal } from "./portal/Portal";
 export { default as MobileMenu } from "./mobile-menu/MobileMenu";
 export { default as PostList } from "./post-list/PostList";
 export { default as PostCard } from "./post-card/PostCard";
+export { default as Popup } from "./popup/Popup";
+export { default as PostPopup } from "./post-popup/PostPopup";

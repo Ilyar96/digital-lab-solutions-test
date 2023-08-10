@@ -35,6 +35,7 @@ const HeaderTop = () => {
 	};
 
 	const onClose = () => {
+		changeSearchValue("");
 		setIsOpen(false);
 	};
 
